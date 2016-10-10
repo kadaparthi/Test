@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="c5fb50e8-59ef-4ada-8ab6-f2b2de4c1b9c" name="Auth" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="c5fb50e8-59ef-4ada-8ab6-f2b2de4c1b9cfileName">Auth</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

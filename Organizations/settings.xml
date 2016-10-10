@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="3c85c4dd-1186-445e-b6c3-82d64fe31e63" name="Organizations" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="3c85c4dd-1186-445e-b6c3-82d64fe31e63fileName">Organizations</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>
