@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Simple Tests" searchProperties="true" id="153f03eb-aeb6-4c1d-a609-20de8a4b8048" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" xmlns:con="http://eviware.com/soapui/config"><con:description>Geocoding sample requests:
+- First request validates the geometry response of a specified location
+- Second request validates the geometry response of a specified coordinate location
+- Third request validates the geometry response of a bounds restricted request
+- Fourth request validates the geometry response of a region restrictioned request
+- Fifth request validates the geometry response of a request filtered by country
+- Sixth request validates the geometry response of a request specifying only a content filter
+
+see https://developers.google.com/maps/documentation/geocoding/</con:description><con:settings><con:setting id="153f03eb-aeb6-4c1d-a609-20de8a4b8048fileName">Simple-Tests</con:setting></con:settings><con:testStep type="restrequest" name="GET - Sample Request" id="68c2f8ff-63fd-4629-9464-66c30789e223"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request" mediaType="application/xml" id="477e9db1-e7c6-4328-95f8-04f1c0e5f0e0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="6cec95ab-ab86-4944-bb65-a3fd86dc9866"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/geocode/json';
+//ns1:Response[1]/ns1:results[1]/ns1:e[1]/ns1:geometry[1]</path><content><![CDATA[<geometry xmlns="http://maps.googleapis.com/maps/api/geocode/json">
+  <location>
+    <lat>37.4223664</lat>
+    <lng>-122.084406</lng>
+  </location>
+  <location_type>ROOFTOP</location_type>
+  <viewport>
+    <northeast>
+      <lat>37.4237153802915</lat>
+      <lng>-122.0830570197085</lng>
+    </northeast>
+    <southwest>
+      <lat>37.42101741970851</lat>
+      <lng>-122.0857549802915</lng>
+    </southwest>
+  </viewport>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="address" value="1600 Amphitheatre Parkway, Mountain View, CA"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Reverse Lookup Sample" id="4a4e1f33-a026-4fb2-ac63-9826b066b5e3"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Reverse Lookup Sample" mediaType="application/xml" id="1847280f-ffc2-4682-83db-d95723804c67"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="0b84d7d4-5764-4607-9a9b-12600362b7b3"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/geocode/json';
+//ns1:Response[1]/ns1:results[1]/ns1:e[1]/ns1:geometry[1]</path><content><![CDATA[<geometry xmlns="http://maps.googleapis.com/maps/api/geocode/json">
+  <location>
+    <lat>40.7142205</lat>
+    <lng>-73.9612903</lng>
+  </location>
+  <location_type>ROOFTOP</location_type>
+  <viewport>
+    <northeast>
+      <lat>40.71556948029149</lat>
+      <lng>-73.95994131970849</lng>
+    </northeast>
+    <southwest>
+      <lat>40.7128715197085</lat>
+      <lng>-73.9626392802915</lng>
+    </southwest>
+  </viewport>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="latlng" value="40.714224,-73.961452"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Viewport Biasing Sample" id="c75b7af3-538f-4b38-84e3-4f5fdc966863"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Viewport Biasing Sample" mediaType="application/xml" id="787a34f5-521f-4150-8f20-db42070f78fd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="216f1ccf-94d4-42be-aa54-b9bbba914dbf"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/geocode/json';
+//ns1:Response[1]/ns1:results[1]/ns1:e[1]/ns1:geometry[1]</path><content><![CDATA[<geometry xmlns="http://maps.googleapis.com/maps/api/geocode/json">
+  <bounds>
+    <northeast>
+      <lat>34.2355209</lat>
+      <lng>-118.5534191</lng>
+    </northeast>
+    <southwest>
+      <lat>34.1854649</lat>
+      <lng>-118.588536</lng>
+    </southwest>
+  </bounds>
+  <location>
+    <lat>34.2048586</lat>
+    <lng>-118.5739621</lng>
+  </location>
+  <location_type>APPROXIMATE</location_type>
+  <viewport>
+    <northeast>
+      <lat>34.2355209</lat>
+      <lng>-118.5534191</lng>
+    </northeast>
+    <southwest>
+      <lat>34.1854649</lat>
+      <lng>-118.588536</lng>
+    </southwest>
+  </viewport>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="bounds" value="34.172684,-118.604794|34.236144,-118.500938"/>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="address" value="Winnetka"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Region Biasing Sample" id="81adc37f-a15b-456f-939c-7720ee72e949"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Region Biasing Sample" mediaType="application/xml" id="7fe0529e-1ef0-4764-bc97-0c5cf954d773"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="97287a1a-2ff8-49a2-ba58-2c5e41ac5212"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/geocode/json';
+//ns1:Response[1]/ns1:results[1]/ns1:e[1]/ns1:geometry[1]</path><content><![CDATA[<geometry xmlns="http://maps.googleapis.com/maps/api/geocode/json">
+  <bounds>
+    <northeast>
+      <lat>39.8860509</lat>
+      <lng>-3.9192424</lng>
+    </northeast>
+    <southwest>
+      <lat>39.8383676</lat>
+      <lng>-4.0796176</lng>
+    </southwest>
+  </bounds>
+  <location>
+    <lat>39.8628316</lat>
+    <lng>-4.027323099999999</lng>
+  </location>
+  <location_type>APPROXIMATE</location_type>
+  <viewport>
+    <northeast>
+      <lat>39.8860509</lat>
+      <lng>-3.9192424</lng>
+    </northeast>
+    <southwest>
+      <lat>39.8383676</lat>
+      <lng>-4.0796176</lng>
+    </southwest>
+  </viewport>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="region" value="es"/>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="address" value="Toledo"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Component Filtering Sample" id="94e10441-1e2d-4a60-a5c1-898e0be9a9df"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Component Filtering Sample" mediaType="application/xml" id="556f6228-e50f-442e-81d0-9fb142505cf2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/xml</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="96d6bb38-d684-4713-ba59-55a21ca0aa74"><con:configuration><path>//GeocodeResponse[1]/result[1]/geometry[1]</path><content><![CDATA[<geometry>
+  <location>
+    <lat>28.4636296</lat>
+    <lng>-16.2518467</lng>
+  </location>
+  <location_type>APPROXIMATE</location_type>
+  <viewport>
+    <southwest>
+      <lat>28.4280248</lat>
+      <lng>-16.3370046</lng>
+    </southwest>
+    <northeast>
+      <lat>28.4876159</lat>
+      <lng>-16.2356646</lng>
+    </northeast>
+  </viewport>
+  <bounds>
+    <southwest>
+      <lat>28.4280248</lat>
+      <lng>-16.3370046</lng>
+    </southwest>
+    <northeast>
+      <lat>28.4876159</lat>
+      <lng>-16.2356646</lng>
+    </northeast>
+  </bounds>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="address" value="santa cruz"/>
+  <con:entry key="components" value="country:ES"/>
+  <con:entry key="format" value="xml"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Component Filtering only Sample" id="e238777d-9aaf-4016-99ff-fe7362e6117c"><con:settings/><con:config service="Geocoding API" resourcePath="/maps/api/geocode/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Component Filtering only Sample" mediaType="application/xml" id="baed4431-f0d3-4574-90f3-e78e888f8d67"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/geocode/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [geometry]" id="eecc446d-ffe5-41d4-b879-1d334ca1c67a"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/geocode/json';
+//ns1:Response[1]/ns1:results[1]/ns1:e[1]/ns1:geometry[1]</path><content><![CDATA[<geometry xmlns="http://maps.googleapis.com/maps/api/geocode/json">
+  <bounds>
+    <northeast>
+      <lat>60.168997</lat>
+      <lng>24.9433353</lng>
+    </northeast>
+    <southwest>
+      <lat>60.16226160000001</lat>
+      <lng>24.9332897</lng>
+    </southwest>
+  </bounds>
+  <location>
+    <lat>60.1657808</lat>
+    <lng>24.938451</lng>
+  </location>
+  <location_type>GEOMETRIC_CENTER</location_type>
+  <viewport>
+    <northeast>
+      <lat>60.168997</lat>
+      <lng>24.9433353</lng>
+    </northeast>
+    <southwest>
+      <lat>60.16226160000001</lat>
+      <lng>24.9332897</lng>
+    </southwest>
+  </viewport>
+</geometry>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="components" value="route:Annegatan|administrative_area:Helsinki|country:Finland"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Distance Matrix API TestSuite" id="615c44bc-939a-4a74-8f00-f168e52dac80" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="615c44bc-939a-4a74-8f00-f168e52dac80fileName">Distance-Matrix-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

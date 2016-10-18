@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Simple Tests" searchProperties="true" id="7eb01803-12ae-4ad9-9ba2-baa9ce3a2811" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" xmlns:con="http://eviware.com/soapui/config"><con:description>Simple tests for validation the Timezone API - 
+- First request validates that the correct timezone is returned for specified coordinates and time
+- Second request validates that the correst DST offset is returned for specified coordindates and time
+- Third request validates that the correct localized (spanish) response is returned.
+
+see https://developers.google.com/maps/documentation/timezone/</con:description><con:settings><con:setting id="7eb01803-12ae-4ad9-9ba2-baa9ce3a2811fileName">Simple-Tests</con:setting></con:settings><con:testStep type="restrequest" name="GET - Sample Request" id="7199ed3d-ef07-4bea-a653-6d34a181eb52"><con:settings/><con:config service="Time Zone API" resourcePath="/maps/api/timezone/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request" mediaType="application/xml" id="e1d56834-4391-478e-8a1c-d83a245a4beb"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>https://maps.googleapis.com/maps/api/timezone/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [Response]" id="11979953-0802-43d7-9502-3ce42d94f844"><con:configuration><path>declare namespace ns1='https://maps.googleapis.com/maps/api/timezone/json';
+//ns1:Response[1]</path><content><![CDATA[<Response xmlns="https://maps.googleapis.com/maps/api/timezone/json">
+  <dstOffset>0</dstOffset>
+  <rawOffset>-28800</rawOffset>
+  <status>OK</status>
+  <timeZoneId>America/Los_Angeles</timeZoneId>
+  <timeZoneName>Pacific Standard Time</timeZoneName>
+</Response>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="timestamp" value="1331161200"/>
+  <con:entry key="location" value="39.6034810,-119.6822510"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Sample Request with DST offset" id="9d4002a1-29c0-4960-afa0-9832d255777b"><con:settings/><con:config service="Time Zone API" resourcePath="/maps/api/timezone/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request with DST offset" mediaType="application/xml" id="67166b9e-b53b-460e-9f75-f81cb7212d93"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>https://maps.googleapis.com/maps/api/timezone/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [Response]" id="0965b8c3-33de-4bb8-baf5-607259b4b1fc"><con:configuration><path>declare namespace ns1='https://maps.googleapis.com/maps/api/timezone/json';
+//ns1:Response[1]</path><content><![CDATA[<Response xmlns="https://maps.googleapis.com/maps/api/timezone/json">
+  <dstOffset>3600</dstOffset>
+  <rawOffset>-28800</rawOffset>
+  <status>OK</status>
+  <timeZoneId>America/Los_Angeles</timeZoneId>
+  <timeZoneName>Pacific Daylight Time</timeZoneName>
+</Response>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="timestamp" value="1331766000"/>
+  <con:entry key="location" value="39.6034810,-119.6822510"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Sample Request with localized response" id="809f1958-e486-4b99-99d3-c78cc39edc52"><con:settings/><con:config service="Time Zone API" resourcePath="/maps/api/timezone/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request with localized response" mediaType="application/xml" id="7af1c754-99c4-4c22-9592-5d0efabf1b1e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>https://maps.googleapis.com/maps/api/timezone/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [Response]" id="bebc5f05-6dd0-4c17-b207-6cff8a429291"><con:configuration><path>declare namespace ns1='https://maps.googleapis.com/maps/api/timezone/json';
+//ns1:Response[1]</path><content><![CDATA[<Response xmlns="https://maps.googleapis.com/maps/api/timezone/json">
+  <dstOffset>3600</dstOffset>
+  <rawOffset>-28800</rawOffset>
+  <status>OK</status>
+  <timeZoneId>America/Los_Angeles</timeZoneId>
+  <timeZoneName>hora de verano del Pacífico</timeZoneName>
+</Response>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="timestamp" value="1331766000"/>
+  <con:entry key="location" value="39.6034810,-119.6822510"/>
+  <con:entry key="language" value="es"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>

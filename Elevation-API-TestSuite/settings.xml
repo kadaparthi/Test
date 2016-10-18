@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Elevation API TestSuite" id="5368c528-b028-4cd7-9aa5-6ecca63469b6" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="5368c528-b028-4cd7-9aa5-6ecca63469b6fileName">Elevation-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

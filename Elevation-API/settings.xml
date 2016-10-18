@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="Elevation API" type="rest" basePath="" id="7c70a285-8eee-48a6-8f43-66494d099764" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="7c70a285-8eee-48a6-8f43-66494d099764fileName">Elevation-API</con:setting></con:settings><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://maps.googleapis.com</con:endpoint></con:endpoints></con:interface>

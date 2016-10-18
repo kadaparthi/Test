@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Places API TestSuite" id="da482619-768b-4cf0-af19-84e43265be9c" xmlns:con="http://eviware.com/soapui/config"><con:description>Testsuite of tests for different Places API endpoints - see https://developers.google.com/places/documentation/</con:description><con:settings><con:setting id="da482619-768b-4cf0-af19-84e43265be9cfileName">Places-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Simple Tests" searchProperties="true" id="98b8de39-fe2a-403d-9b79-23ee135182c5" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" xmlns:con="http://eviware.com/soapui/config"><con:description>Basic route-planning test with both JSON and XML variants:
+- First request: route from Toronto to Montreal, response in JSON format - validates bounding coordinates and actual route steps
+- Second request: same route and validations but now with highways excluded
+- Third request: a transit from Brooklyn to Queens starting at time of test execution (using an inline groovy script). Validates the start and 
+end destinations and the number of steps needed. 
+
+see https://developers.google.com/maps/documentation/directions/</con:description><con:settings><con:setting id="98b8de39-fe2a-403d-9b79-23ee135182c5fileName">Simple-Tests</con:setting></con:settings><con:testStep type="restrequest" name="GET - Sample Request - JSON" id="cd97c881-6f2b-43aa-8c6a-a0f0c6eb6040"><con:settings/><con:config service="Direction API" resourcePath="/maps/api/directions/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request - JSON" mediaType="application/xml" id="e8a75156-9f09-446a-aa9a-cfbcf564ecf4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/directions/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [bounds]" id="ac70acf0-cdd5-46da-b2cc-949aee3c7e79"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/directions/json';
+//ns1:Response[1]/ns1:routes[1]/ns1:e[1]/ns1:bounds[1]</path><content><![CDATA[<bounds xmlns="http://maps.googleapis.com/maps/api/directions/json">
+  <northeast>
+    <lat>45.5017123</lat>
+    <lng>-73.5652739</lng>
+  </northeast>
+  <southwest>
+    <lat>43.6533103</lat>
+    <lng>-79.3827675</lng>
+  </southwest>
+</bounds>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Check number of steps [12]" id="36bcce9d-9a83-443a-9a6e-0ec940c57c65"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/directions/json';
+count( //ns1:Response/ns1:routes/ns1:e/ns1:legs/ns1:e/ns1:steps/ns1:e)</path><content>17</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="origin" value="Toronto"/>
+  <con:entry key="destination" value="Montreal"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Sample Request - no highways - JSON" id="92555d8b-c6d6-432e-b3b3-d070d2a813b1"><con:settings/><con:config service="Direction API" resourcePath="/maps/api/directions/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Sample Request - no highways - JSON" mediaType="application/xml" id="8b251ef7-7cc1-4bf4-8f55-73640cb05f1e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/directions/json</con:originalUri><con:assertion type="XPath Match" name="Match content of [bounds]" id="ca8968fe-45d5-44d3-a214-4de52b8fa13d"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/directions/json';
+//ns1:Response[1]/ns1:routes[1]/ns1:e[1]/ns1:bounds[1]</path><content><![CDATA[<bounds xmlns="http://maps.googleapis.com/maps/api/directions/json">
+  <northeast>
+    <lat>45.5017123</lat>
+    <lng>-73.56220110000001</lng>
+  </northeast>
+  <southwest>
+    <lat>43.6513486</lat>
+    <lng>-79.38306299999999</lng>
+  </southwest>
+</bounds>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Check number of steps [281]" id="b13888c8-cd75-46e9-984c-ddc85cd0cbbe"><con:configuration><path>declare namespace ns1='http://maps.googleapis.com/maps/api/directions/json';
+count( //ns1:Response/ns1:routes/ns1:e/ns1:legs/ns1:e/ns1:steps/ns1:e) > 200</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="sensor" value="false"/>
+  <con:entry key="avoid" value="highways"/>
+  <con:entry key="origin" value="Toronto"/>
+  <con:entry key="mode" value="bicycling"/>
+  <con:entry key="destination" value="Montreal"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="GET - Transit with departure time - XML" id="89fb4235-5385-4797-8c6d-a5601dd2ded7" disabled="true"><con:settings/><con:config service="Direction API" resourcePath="/maps/api/directions/{format}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET - Transit with departure time - XML" mediaType="application/xml" id="b7fe53b4-bcba-4d70-a6b0-c2d999fb2c89"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://maps.googleapis.com</con:endpoint><con:request/><con:originalUri>http://maps.googleapis.com/maps/api/directions/xml</con:originalUri><con:assertion type="XPath Match" name="Match content of [start_location]" id="332700f9-2e94-4599-8df4-550ada686a94"><con:configuration><path>//DirectionsResponse[1]/route[1]/leg[1]/step[1]/start_location[1]</path><content><![CDATA[<start_location>
+  <lat>40.6497484</lat>
+  <lng>-73.9499818</lng>
+</start_location>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Match content of [end_location]" id="22174ae4-c01c-4983-a49c-7606a2343602"><con:configuration><path>//DirectionsResponse[1]/route[1]/leg[1]/step[1]/end_location[1]</path><content><![CDATA[<end_location>
+  <lat>*</lat>
+  <lng>*</lng>
+</end_location>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Check number of steps [7]" id="f9c33650-7f9a-464e-a12c-a37e2615e2fa"><con:configuration><path>count( //DirectionsResponse/route/leg/step/step) > 5</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="mode" value="driving"/>
+  <con:entry key="origin" value="Penrith"/>
+  <con:entry key="destination" value="Central"/>
+  <con:entry key="sensor" value="true"/>
+  <con:entry key="region" value="Australia"/>
+  <con:entry key="departure_time" value="${=(int)new java.util.Date().time/1000}"/>
+</con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Directions API TestSuite" id="a135ad89-d559-44e6-9fc8-e280bef19adb" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="a135ad89-d559-44e6-9fc8-e280bef19adbfileName">Directions-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

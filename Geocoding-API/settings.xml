@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="Geocoding API" type="rest" basePath="" id="deaff161-43e7-451b-9455-92d3bfe47845" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="deaff161-43e7-451b-9455-92d3bfe47845fileName">Geocoding-API</con:setting></con:settings><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://maps.googleapis.com</con:endpoint></con:endpoints></con:interface>

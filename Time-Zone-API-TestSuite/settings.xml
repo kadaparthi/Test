@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Time Zone API TestSuite" id="14fe4353-d781-4fa8-8938-349be4e1f640" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="14fe4353-d781-4fa8-8938-349be4e1f640fileName">Time-Zone-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>

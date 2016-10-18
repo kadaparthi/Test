@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite name="Geocoding API TestSuite" id="7c99d169-bbdf-44c6-9f05-320456443483" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="7c99d169-bbdf-44c6-9f05-320456443483fileName">Geocoding-API-TestSuite</con:setting></con:settings><con:runType>SEQUENTIAL</con:runType><con:properties/><con:reportParameters/></con:testSuite>
